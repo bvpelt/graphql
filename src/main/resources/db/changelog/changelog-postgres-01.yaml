@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 100
+      author: bart
+      changes:
+        - createTable:
+            tableName: VEHICLE
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(32)
+              - column:
+                  name: model_code
+                  type: varchar(32)
+              - column:
+                  name: brand_name
+                  type: varchar(32)
+              - column:
+                  name: launch_date
+                  type: DATE

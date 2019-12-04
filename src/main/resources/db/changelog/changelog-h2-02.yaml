@@ -1,0 +1,91 @@
+databaseChangeLog:
+  - changeSet:
+      id: 200
+      author: bart
+      changes:
+        - createTable:
+            tableName: BOOK
+            columns:
+              - column:
+                  name: BOOK_ID
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pageCount
+                  type: number
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: AUTHOR
+            columns:
+              - column:
+                  name: AUTHOR_ID
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstName
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastName
+                  type: nvarchar(32)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: BOOK_AUTHOR
+            columns:
+              - column:
+                  name: BOOKAUTHOR_ID
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BOOK_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: AUTHOR_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+        - createIndex:
+            clustered: true
+            indexName: idx_book_author
+            tableName: BOOK_AUTHOR
+            unique: true
+            columns:
+              - column:
+                  name: BOOK_ID
+              - column:
+                  name: AUTHOR_ID
+        - createIndex:
+            clustered: true
+            indexName: idx_book
+            tableName: BOOK_AUTHOR
+            unique: false
+            columns:
+              - column:
+                  name: BOOK_ID
+        - createIndex:
+            clustered: true
+            indexName: idx_author
+            tableName: BOOK_AUTHOR
+            unique: false
+            columns:
+              - column:
+                  name: AUTHOR_ID

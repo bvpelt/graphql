@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 300
+      author: bart
+      changes:
+        - createSequence:
+            cycle: false
+            incrementBy: 1
+            minValue: 1
+            sequenceName: hibernate_sequence
+            startValue: 1
+
+
