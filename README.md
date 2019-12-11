@@ -102,3 +102,8 @@ See
 - https://dzone.com/articles/a-beginners-guide-to-graphql-with-spring-boot
 - https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
 - https://www.baeldung.com/spring-graphql
+- https://www.howtographql.com/
+- https://www.pluralsight.com/guides/building-a-graphql-server-with-spring-boot
+- https://karl.run/2018/09/05/spring-boot-schema-first-graphql/
+- https://www.baeldung.com/sql-logging-spring-boot
+- https://repository.sonatype.org/

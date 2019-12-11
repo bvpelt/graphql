@@ -42,7 +42,7 @@ public class BookService {
 
         Optional<Book> optionalBook = this.bookRepositoryH2.findBookByNameAndPageCount(name, pageCount);
         if (optionalBook.isPresent()) {
-            book = optionalBook.get();
+            createdBook = optionalBook.get();
         } else {
             book.setName(name);
             book.setPageCount(pageCount);

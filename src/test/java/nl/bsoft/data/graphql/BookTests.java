@@ -4,6 +4,7 @@ package nl.bsoft.data.graphql;
 import lombok.extern.slf4j.Slf4j;
 import nl.bsoft.data.graphql.model.h2.Author;
 import nl.bsoft.data.graphql.model.h2.Book;
+import nl.bsoft.data.graphql.model.h2.ISBN;
 import nl.bsoft.data.graphql.services.BookService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,64 @@ public class BookTests {
         Assert.assertEquals(book.getName(), newBook.getName());
         Assert.assertEquals(book.getPageCount(), newBook.getPageCount());
         Assert.assertEquals(book.getAuthors().size(), newBook.getAuthors().size());
+
+    }
+
+    @Test
+    public void checkISBN() {
+
+        // prefix               978
+        // registratieGroep      90
+        // uitgeversAanduiding  488
+        // titelAanduiding     3731
+        // controleCijfer         1
+        ISBN isbn = new ISBN("9789048837311");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(  90, isbn.getRegistratieGroep());
+        Assert.assertEquals( 488, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(3731, isbn.getTitelAanduiding());
+        Assert.assertEquals(   1, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
+
+        isbn = new ISBN("9789045039770");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(  90, isbn.getRegistratieGroep());
+        Assert.assertEquals( 450, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(3977, isbn.getTitelAanduiding());
+        Assert.assertEquals(   0, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
+
+        isbn = new ISBN("9789029078931");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(  90, isbn.getRegistratieGroep());
+        Assert.assertEquals( 290, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(7893, isbn.getTitelAanduiding());
+        Assert.assertEquals(   1, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
+
+        isbn = new ISBN("9781785031168");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(   1, isbn.getRegistratieGroep());
+        Assert.assertEquals( 850, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(3116, isbn.getTitelAanduiding());
+        Assert.assertEquals(   8, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
+
+        isbn = new ISBN("9780099590088");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(  00, isbn.getRegistratieGroep());
+        Assert.assertEquals( 995, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(9008, isbn.getTitelAanduiding());
+        Assert.assertEquals(   8, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
+
+        isbn = new ISBN("9783257229530");
+        Assert.assertEquals( 978, isbn.getPrefix());
+        Assert.assertEquals(   3, isbn.getRegistratieGroep());
+        Assert.assertEquals( 572, isbn.getUitgeversAanduiding());
+        Assert.assertEquals(2953, isbn.getTitelAanduiding());
+        Assert.assertEquals(   0, isbn.getControleCijfer());
+        log.info("ISBN: {}", isbn);
 
     }
 }
